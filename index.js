@@ -14,13 +14,16 @@ express()
         const DUser = new Discord.User(DClient, { id: req.query.user })
         DUser.fetch()
           .then((data) => {
+            console.log('data: ', data)
             res.json(data)
             res.end()
           }).catch((err) => {
+            console.log('error1: ', err)
             res.json(err)
             res.end()
           })
       }).catch((err) => {
+        console.log('error: ', err)
         res.json(err)
         res.end()
       })
