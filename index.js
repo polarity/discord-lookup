@@ -9,7 +9,9 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => {
-    res.send(client.fetchUser('112328864650231808'))
-    res.end()
+    client.user.fetch('112328864650231808').then(() => {
+      res.send()
+      res.end()
+    }).catch((err) => res.end(err))
   })
   .listen(PORT, () => console.log(`Listening on ${PORT}`))
